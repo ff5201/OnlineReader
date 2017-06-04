@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">OnlineReader</string>
+    <string name="home">首页</string>
+    <string name="set">设置</string>
+    <string name="about">关于</string>
+    <string name="exit">退出</string>
+    <string name="myName">范峻珲</string>
+</resources>

@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Created by FJH on 2017/5/14.ActivityManager
+ * 搜集所有打开的activity
  */
 
 public class ActivityManager {

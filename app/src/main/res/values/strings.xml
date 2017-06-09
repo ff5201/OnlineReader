@@ -4,5 +4,8 @@
     <string name="set">设置</string>
     <string name="about">关于</string>
     <string name="exit">退出</string>
+    <string name="search">搜索</string>
+    <string name="input_hint">小说名(模糊查找)</string>
+    <string name="input_prefill"></string>
     <string name="myName">范峻珲</string>
 </resources>

@@ -4,8 +4,10 @@ import android.util.Log;
 
 import com.bumptech.glide.request.Request;
 import com.example.fjh.onlinereader.Bean.Book;
+import com.example.fjh.onlinereader.Bean.Catalog;
 import com.example.fjh.onlinereader.Interface.booksListListener;
 import com.example.fjh.onlinereader.Model.Interface.booksListModel;
+import com.example.fjh.onlinereader.Util.GsonUtil;
 import com.example.fjh.onlinereader.Util.OkHttpUtil;
 import com.example.fjh.onlinereader.url;
 import com.google.gson.Gson;
@@ -30,7 +32,7 @@ import static com.example.fjh.onlinereader.url.bookListURL;
 
 public class booksListModelImpl implements booksListModel {
 
-    String bookListUrl=bookListURL.toString();
+    private String bookListUrl=bookListURL.toString();
 
     public void getAllBooksList(final booksListListener Listener){
         new Thread(new Runnable() {
@@ -78,7 +80,8 @@ public class booksListModelImpl implements booksListModel {
                             String responseData = new String(response.body().bytes(),"GB2312");
                             Log.d("服务器返回输入",responseData);
                             //用GSON将json字符串序列化
-                            List<Book> booksList =parseJsonWithGSON(responseData);
+                            //List<Book> booksList = parseJsonWithGSON(responseData);
+                            List<Book> booksList= GsonUtil.fromJsonList(responseData,Book.class);
                             Listener.onSuccess(booksList);
                         }
                     });
@@ -104,7 +107,7 @@ public class booksListModelImpl implements booksListModel {
                         @Override
                         public void onFailure(Call call, IOException e) {
                             Log.d("服务器","连接出错");
-                            Listener.onError("服务器连接出错!请检查网络!");
+                            Listener.onError("网络出错!请检查网络!");
                         }
 
                         @Override
@@ -112,7 +115,8 @@ public class booksListModelImpl implements booksListModel {
                             String responseData = new String(response.body().bytes(),"GB2312");
                             Log.d("服务器返回输入",responseData);
                             //用GSON将json字符串序列化
-                            List<Book> booksList =parseJsonWithGSON(responseData);
+                            //List<Book> booksList = parseJsonWithGSON(responseData);
+                            List<Book> booksList= GsonUtil.fromJsonList(responseData,Book.class);
                             Listener.onSuccess(booksList);
                         }
                     });
@@ -123,13 +127,13 @@ public class booksListModelImpl implements booksListModel {
         }).start();
     }
 
-    private List<Book> parseJsonWithGSON(String json){
+    /*private List<Book> parseJsonWithGSON(String json){
         Gson gson=new Gson();
         List<Book> booksList=gson.fromJson(json,new TypeToken<List<Book>>(){}.getType());
-        /*for (Book b:booksList
+        for (Book b:booksList
              ) {
             Log.d("书本","ID"+String.valueOf(b.getID())+String.valueOf(b.getClassify())+b.getName()+b.getAuthor()+b.getPublication());
-        }*/
+        }
         return booksList;
-    }
+    }*/
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OnlineReader</string>
+    <string name="app_name">在线阅读器</string>
     <string name="home">首页</string>
     <string name="set">设置</string>
     <string name="about">关于</string>
@@ -8,4 +8,7 @@
     <string name="input_hint">小说名(模糊查找)</string>
     <string name="input_prefill"></string>
     <string name="myName">范峻珲</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="transition_book_imgages">transition_book_imgages</string>
 </resources>

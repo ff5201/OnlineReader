@@ -14,44 +14,23 @@
             android:id="@+id/toolBar_main"
             layout="@layout/include_apptoolbar"/>
 
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_refresh_main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_book_frag"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </android.support.v4.widget.SwipeRefreshLayout>
-
         <FrameLayout
             android:id="@+id/activity_main"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:src="@drawable/ic_search_white_24dp"
-            android:elevation="8dp"/>
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view_main"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/drawerWidth"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:menu="@menu/nav_menu"
-        app:headerLayout="@layout/nav_header">
+        app:headerLayout="@layout/nav_header"/>
 
-    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>
 

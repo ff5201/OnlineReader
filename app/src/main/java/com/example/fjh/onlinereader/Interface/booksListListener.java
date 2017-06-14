@@ -11,6 +11,5 @@ import java.util.List;
 
 public interface booksListListener {
     void onSuccess(List<Book> b);
-    void onSearchSuccess(List<Book> b);
     void onError(String s);
 }

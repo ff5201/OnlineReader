@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,39 +15,49 @@
             android:id="@+id/collapsing_toolbar_book"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginEnd="70dp"
-            app:expandedTitleMarginStart="50dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:fitsSystemWindows="true">
 
             <ImageView
                 android:id="@+id/ImageCI_book"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/temp_book"
-                app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.8" />
+                app:layout_collapseParallaxMultiplier="0.7"
+                android:fitsSystemWindows="true"
+                android:transitionName="@string/transition_book_imgages"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar_book"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                app:layout_collapseMode="pin" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <android.support.design.widget.TabLayout
+            android:id="@+id/sliding_tabs_book"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabGravity="fill"
+            app:tabMode="fixed" />
 
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager_book"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

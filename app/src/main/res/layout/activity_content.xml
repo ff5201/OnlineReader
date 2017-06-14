@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/book_list_CardView_LR"
+                android:layout_marginLeft="@dimen/book_list_CardView_LR"
+                android:layout_marginTop="@dimen/book_list_CardView_TB"
+                android:layout_marginBottom="@dimen/book_list_CardView_TB"
+                app:cardCornerRadius="6dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/content_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="22sp"
+                        android:textColor="@color/colorPrimary"
+                        android:text="第一章 直播那亢龙bbbbb"/>
+
+                    <View
+                        android:id="@+id/content_View"
+                        android:background="@color/colorAccent"
+                        android:layout_below="@+id/content_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"/>
+
+                    <TextView
+                        android:id="@+id/content_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/content_View"
+                        android:layout_marginTop="10dp"
+                        android:lineSpacingExtra="3dp"
+                        android:textSize="18sp"
+                        android:text="了感觉到了撒娇歌法觉到了撒娇歌法律手段骄傲了国剧盛典发了苦尽甘来卡萨丁附近两个空间放大垃圾噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾觉到了撒娇歌法律手段骄傲了国剧盛典发了苦尽甘来卡萨丁附近两个空间放大垃圾噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥g觉到了撒娇歌法律手段骄傲了国剧盛典发了苦尽甘来卡萨丁附近两个空间放大垃圾噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬as代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬律手段骄傲了国剧盛典发了苦尽甘来卡萨丁附近两个空间放大垃圾噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬噶啥地方价格的说法老师打价格拉俯拾地芥gas代付款了感觉阿斯蒂芬"/>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

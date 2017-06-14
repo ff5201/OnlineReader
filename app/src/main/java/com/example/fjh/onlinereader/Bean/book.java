@@ -1,10 +1,12 @@
 package com.example.fjh.onlinereader.Bean;
 
+import java.io.Serializable;
+
 /**
  * Created by FJH on 2017/6/5. 没完整，后期修改，测试用
  */
 
-public class Book {
+public class Book implements Serializable {
     private int ID;
     private int classify_ID;
     private String name;

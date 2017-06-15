@@ -35,6 +35,7 @@ import com.example.fjh.onlinereader.Model.booksListModelImpl;
 import com.example.fjh.onlinereader.R;
 import com.example.fjh.onlinereader.Util.LogUtil;
 import com.example.fjh.onlinereader.Widget.RecyclerItemClickListener;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,8 +64,8 @@ public class BookListFragment extends Fragment implements booksListListener {
     private SwipeRefreshLayout swipeRefresh;
     //Toolbar控件
     private Toolbar toolbar_main;
-    //ProgressBar控件
-    private ProgressBar progressBar;
+    //avi动画
+    private AVLoadingIndicatorView avi;
 
     //定义model接口
     private booksListModelImpl blmi;
@@ -78,7 +79,7 @@ public class BookListFragment extends Fragment implements booksListListener {
                     adapter=new bookListAdapter(bookList);
                     bookListRecyclerView.setAdapter(adapter);
                     Log.d(TAG,"adapter成功");
-                    progressBar.setVisibility(View.GONE);
+                    stopAnim();
                     MyAnimation.startFABAnimation(fab);
                     break;
                 case LINK_ERROR:
@@ -113,8 +114,8 @@ public class BookListFragment extends Fragment implements booksListListener {
         bookListRecyclerView.setLayoutManager(layoutManager);
         bookListRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), onItemClickListener));
 
-        //ProgressBar进度条
-        progressBar=(ProgressBar)view.findViewById(R.id.progressBar_book_flag);
+        //过度动画
+        avi=(AVLoadingIndicatorView)view.findViewById(R.id.Book_avi);
 
         //Model层接口,从网络获取书籍
         blmi=new booksListModelImpl();
@@ -154,7 +155,7 @@ public class BookListFragment extends Fragment implements booksListListener {
     //确认搜索
     private void doSearch(String input){
         blmi.getSearchBooksList(input,this);
-        progressBar.setVisibility(View.VISIBLE);
+        startAnim();
     }
 
     //下拉刷新事件
@@ -178,6 +179,17 @@ public class BookListFragment extends Fragment implements booksListListener {
             ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
         }
     };
+
+    //加载动画控制
+    void startAnim(){
+        avi.show();
+        // or avi.smoothToShow();
+    }
+
+    void stopAnim(){
+        avi.hide();
+        // or avi.smoothToHide();
+    }
 
     //通讯成功
     @Override

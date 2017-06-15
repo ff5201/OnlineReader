@@ -33,6 +33,7 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.fjh.onlinereader.Adapter.bookListAdapter;
 import com.example.fjh.onlinereader.Bean.Book;
+import com.example.fjh.onlinereader.Fragmnet.AboutFragment;
 import com.example.fjh.onlinereader.Fragmnet.BookListFragment;
 import com.example.fjh.onlinereader.Interface.booksListListener;
 import com.example.fjh.onlinereader.Manager.ActivityManager;
@@ -119,11 +120,15 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     private void switchToAbout(){
+        getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, new AboutFragment()).commit();
         actionBar.setTitle(R.string.about);
     }
 
     private void switchToSet(){
         actionBar.setTitle(R.string.set);
+    }
+    private void switchToExit(){
+        ActivityManager.finishAll();
     }
 
     //设置Navigation点击事件
@@ -135,7 +140,7 @@ public class MainActivity extends AppCompatActivity  {
                     case R.id.nav_home:switchToMain();break;
                     case R.id.nav_set:switchToSet();break;
                     case R.id.nav_about:switchToAbout();break;
-                    case R.id.nav_exit:ActivityManager.finishAll();break;
+                    case R.id.nav_exit:switchToExit();break;
                     default:break;
                 }
                 mdrawerLayout.closeDrawers();

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/about_panel_height"
+        android:background="@color/colorPrimary">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/about_icon_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src ="@drawable/google"
+                android:layout_centerInParent="true" />
+            <TextView
+                android:id="@+id/about_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/about_icon_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="@string/about_degign"
+                android:textColor="#FFF"
+                android:textSize="20sp"/>
+        </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="@string/about_app"/>
+    </LinearLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/book_list_CardView_LR"
+        android:layout_marginLeft="@dimen/book_list_CardView_LR"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp">
+            <TextView
+                android:id="@+id/about_show"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondary_text"
+                android:textSize="18sp"
+                android:text="本应用程序基于Google推出的Material Design支持库，采用MVC框架，结合了一些网上Android开发者的设计和码源进行开发。也是本人第一个基于一直喜欢的material风格开发的安卓程序！"/>
+            <TextView
+                android:id="@+id/about_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/about_show"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorPrimary"
+                android:text="开发者:范峻珲"/>
+            <TextView
+                android:id="@+id/about_use"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/about_author"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorPrimary"
+                android:text="程序用途:Android课程设计"/>
+            <TextView
+                android:id="@+id/about_github"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/about_use"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorPrimary"
+                android:autoLink="web"
+                android:text="github地址:"/>
+            <TextView
+                android:id="@+id/about_github_http"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/about_github"
+                android:layout_alignBottom="@+id/about_github"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorPrimary"
+                android:autoLink="web"
+                android:text="www.baidu.com"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

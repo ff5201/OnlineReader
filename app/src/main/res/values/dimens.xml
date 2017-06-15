@@ -15,4 +15,5 @@
 
     <dimen name="catalog_item_marginLR">10dp</dimen>
     <dimen name="catalog_item_marginTB">7dp</dimen>
+    <dimen name="about_panel_height">200dp</dimen>
 </resources>

@@ -19,10 +19,10 @@ public class ContentActivity extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         Transition slide_right = TransitionInflater.from(this).inflateTransition(android.R.transition.slide_right);
         getWindow().setEnterTransition(slide_right);
-
-
         setContentView(R.layout.activity_content);
         ActivityManager.addActivity(this);
+
+
         Catalog catalog = (Catalog) getIntent().getSerializableExtra("bookCatalog");
         TextView title = (TextView)findViewById(R.id.content_title);
         title.setText(catalog.getTitle()+" "+catalog.getName());

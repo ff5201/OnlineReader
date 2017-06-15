@@ -11,4 +11,7 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="transition_book_imgages">transition_book_imgages</string>
+    <string name="about_year">2017-6-15</string>
+    <string name="about_app">应用介绍</string>
+    <string name="about_degign">Material Design</string>
 </resources>

@@ -109,8 +109,8 @@ public class BookCatalogFragment extends Fragment implements booksCatalogListene
             Catalog c=adapter.getCatalolg(position);
             Intent intent=new Intent(MyApplication.getContext(), ContentActivity.class);
             intent.putExtra("bookCatalog", c);
-            ActivityOptionsCompat options12 = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity());
-            ActivityCompat.startActivity(getContext(), intent, options12.toBundle());
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity());
+            ActivityCompat.startActivity(getContext(), intent, options.toBundle());
         }
     };
 

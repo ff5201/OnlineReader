@@ -25,12 +25,13 @@
         android:elevation="8dp"
         app:pressedTranslationZ="12dp"/>
 
-    <ProgressBar
-        android:id="@+id/progressBar_book_flag"
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/Book_avi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         android:layout_gravity="center"
-        android:indeterminate="true"
-        android:visibility="visible" />
+        app:indicatorName="LineScalePulseOutRapidIndicator"
+        app:indicatorColor="@color/colorPrimary" />
 
 </FrameLayout>

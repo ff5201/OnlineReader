@@ -5,9 +5,9 @@
             android:icon="@drawable/ic_home_white_24dp"
             android:title="@string/home" />
 
-        <item android:id="@+id/nav_set"
+        <!--<item android:id="@+id/nav_set"
             android:icon="@drawable/ic_settings_white_24dp"
-            android:title="@string/set"/>
+            android:title="@string/set"/>-->
 
         <item android:id="@+id/nav_about"
             android:icon="@drawable/ic_favorite_border_white_24dp"

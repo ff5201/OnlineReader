@@ -1,10 +1,13 @@
 package com.example.fjh.onlinereader;
 
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
+import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.fjh.onlinereader.Bean.Catalog;
@@ -12,6 +15,7 @@ import com.example.fjh.onlinereader.Manager.ActivityManager;
 
 
 public class ContentActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

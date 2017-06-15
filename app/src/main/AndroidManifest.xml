@@ -24,7 +24,10 @@
             android:name=".BookActivity"
             android:launchMode="singleTask"
             android:theme="@style/ActivityBookTheme" />
-        <activity android:name=".ContentActivity"></activity>
+        <activity
+            android:name=".ContentActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/theme_fullScreen"/>
     </application>
 
 </manifest>

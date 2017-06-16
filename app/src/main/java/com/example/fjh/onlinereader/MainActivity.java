@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity  {
                 R.string.drawer_close);
         mDrawerToggle.syncState();
         mdrawerLayout.addDrawerListener(mDrawerToggle);
-        setDrawerLeftEdgeSize(this,mdrawerLayout,0.2f);
+        setDrawerLeftEdgeSize(this,mdrawerLayout,0.1f);
 
 
         //侧滑导航Navigation

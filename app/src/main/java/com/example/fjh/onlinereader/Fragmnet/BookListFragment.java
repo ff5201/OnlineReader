@@ -168,6 +168,7 @@ public class BookListFragment extends Fragment implements booksListListener {
     private RecyclerItemClickListener.OnItemClickListener onItemClickListener = new RecyclerItemClickListener.OnItemClickListener() {
         @Override
         public void onItemClick(View view, int position) {
+
             Book book = adapter.getBook(position);
             Intent intent = new Intent(getActivity(), BookActivity.class);
             intent.putExtra("intentBook", book);

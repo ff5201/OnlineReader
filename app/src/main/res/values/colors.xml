@@ -7,4 +7,6 @@
     <color name="secondary_text">#727272</color>
     <color name="readBack">#CD853F</color>
     <color name="readCrad">#F0E68C</color>
+    <color name="text_Grey">#8496a0</color>
+    <color name="colorWhite">#ffffff</color>
 </resources>

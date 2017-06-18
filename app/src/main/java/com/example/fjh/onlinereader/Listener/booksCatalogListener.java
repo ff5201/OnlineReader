@@ -1,4 +1,4 @@
-package com.example.fjh.onlinereader.Interface;
+package com.example.fjh.onlinereader.Listener;
 
 import com.example.fjh.onlinereader.Bean.Catalog;
 
@@ -9,6 +9,6 @@ import java.util.List;
  */
 
 public interface booksCatalogListener {
-    void onSuccess(List<Catalog> c);
+    void onSuccess(String s);
     void onError(String s);
 }

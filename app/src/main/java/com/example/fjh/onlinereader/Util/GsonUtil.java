@@ -52,6 +52,7 @@ public class GsonUtil {
     public static <T> T GsonToBean(String gsonString, Class<T> cls) {
         T t = null;
         if (gson != null) {
+            gsonString=gsonString.substring(1,gsonString.length()-1);
             t = gson.fromJson(gsonString, cls);
         }
         return t;

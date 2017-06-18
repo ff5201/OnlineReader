@@ -1,4 +1,4 @@
-package com.example.fjh.onlinereader.Interface;
+package com.example.fjh.onlinereader.Listener;
 
 import com.example.fjh.onlinereader.Bean.Book;
 
@@ -11,5 +11,6 @@ import java.util.List;
 
 public interface booksListListener {
     void onSuccess(List<Book> b);
+    void onSearchSuccess(List<Book> b);
     void onError(String s);
 }

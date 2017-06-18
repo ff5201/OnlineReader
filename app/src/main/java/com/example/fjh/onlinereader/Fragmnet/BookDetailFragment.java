@@ -17,7 +17,7 @@ import com.example.fjh.onlinereader.R;
 public class BookDetailFragment extends Fragment {
 
     //自定义frag启动
-    public static BookDetailFragment DetailFragmentStart(String info){
+    public static BookDetailFragment newInstance(String info){
         Bundle args = new Bundle();
         BookDetailFragment fragment = new BookDetailFragment();
         args.putString("info", info);

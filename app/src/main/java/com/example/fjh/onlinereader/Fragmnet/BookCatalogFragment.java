@@ -1,7 +1,6 @@
 package com.example.fjh.onlinereader.Fragmnet;
 
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,17 +15,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.fjh.onlinereader.Adapter.bookCatalogAdapter;
-import com.example.fjh.onlinereader.Adapter.bookListAdapter;
-import com.example.fjh.onlinereader.Animation.MyAnimation;
-import com.example.fjh.onlinereader.Bean.Book;
 import com.example.fjh.onlinereader.Bean.Catalog;
-import com.example.fjh.onlinereader.BookActivity;
+import com.example.fjh.onlinereader.Bean.CatalogList;
 import com.example.fjh.onlinereader.ContentActivity;
-import com.example.fjh.onlinereader.Interface.booksCatalogListener;
+import com.example.fjh.onlinereader.Listener.booksCatalogListener;
 import com.example.fjh.onlinereader.Manager.MyApplication;
 import com.example.fjh.onlinereader.Model.booksCatalogModelImpl;
 import com.example.fjh.onlinereader.R;
@@ -108,6 +102,7 @@ public class BookCatalogFragment extends Fragment implements booksCatalogListene
         public void onItemClick(View view, int position) {
             Catalog c=adapter.getCatalolg(position);
             Intent intent=new Intent(MyApplication.getContext(), ContentActivity.class);
+            Bundle bundle=new Bundle();
             intent.putExtra("bookCatalog", c);
             ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity());
             ActivityCompat.startActivity(getContext(), intent, options.toBundle());
@@ -116,12 +111,14 @@ public class BookCatalogFragment extends Fragment implements booksCatalogListene
 
     //网络通讯成功
     @Override
-    public void onSuccess(List<Catalog> c) {
-        catalogList.clear();
-        catalogList=c;
-        Message msg=new Message();
-        msg.what=LINK_SUCCESS;
-        handler.sendMessage(msg);
+    public void onSuccess(String s) {
+        if(s.equals("true")){
+            catalogList.clear();
+            catalogList= CatalogList.getCatalogList();
+            Message msg=new Message();
+            msg.what=LINK_SUCCESS;
+            handler.sendMessage(msg);
+        }
     }
 
     //网络通讯失败

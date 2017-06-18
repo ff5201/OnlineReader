@@ -14,4 +14,5 @@
     <string name="about_year">2017-6-15</string>
     <string name="about_app">应用介绍</string>
     <string name="about_degign">Material Design</string>
+    <string name="search_no_result">查找无结果</string>
 </resources>

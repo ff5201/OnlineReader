@@ -73,8 +73,8 @@ public class BookActivity extends AppCompatActivity {
     //tab切换页面
     private void setSwitchViewPage(ViewPager vg){
         SwitchViewPageAdapter adapter = new SwitchViewPageAdapter(getSupportFragmentManager());
-        adapter.addFragment(BookDetailFragment.DetailFragmentStart(book.getContentInfo()), "内容简介");
-        adapter.addFragment(BookDetailFragment.DetailFragmentStart(book.getAuthorInfo()), "作者简介");
+        adapter.addFragment(BookDetailFragment.newInstance(book.getContentInfo()), "内容简介");
+        adapter.addFragment(BookDetailFragment.newInstance(book.getAuthorInfo()), "作者简介");
         adapter.addFragment(BookCatalogFragment.FragmentStart(book.getID()), "书籍目录");
         viewPager.setAdapter(adapter);
     }

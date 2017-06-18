@@ -2,16 +2,11 @@ package com.example.fjh.onlinereader.Model;
 
 import android.util.Log;
 
-import com.bumptech.glide.request.Request;
 import com.example.fjh.onlinereader.Bean.Book;
-import com.example.fjh.onlinereader.Bean.Catalog;
-import com.example.fjh.onlinereader.Interface.booksListListener;
+import com.example.fjh.onlinereader.Listener.booksListListener;
 import com.example.fjh.onlinereader.Model.Interface.booksListModel;
 import com.example.fjh.onlinereader.Util.GsonUtil;
 import com.example.fjh.onlinereader.Util.OkHttpUtil;
-import com.example.fjh.onlinereader.url;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 
 import java.io.IOException;
@@ -20,7 +15,6 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
@@ -117,7 +111,7 @@ public class booksListModelImpl implements booksListModel {
                             //用GSON将json字符串序列化
                             //List<Book> booksList = parseJsonWithGSON(responseData);
                             List<Book> booksList= GsonUtil.fromJsonList(responseData,Book.class);
-                            Listener.onSuccess(booksList);
+                            Listener.onSearchSuccess(booksList);
                         }
                     });
                 }catch (Exception e){

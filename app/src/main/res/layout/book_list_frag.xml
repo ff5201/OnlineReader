@@ -34,4 +34,15 @@
         app:indicatorName="LineScalePulseOutRapidIndicator"
         app:indicatorColor="@color/colorPrimary" />
 
+    <TextView
+        android:id="@+id/Book_SearchNoResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="italic"
+        android:textSize="18dp"
+        android:text="@string/search_no_result"/>
+
 </FrameLayout>

@@ -1,8 +1,6 @@
 package com.example.fjh.onlinereader.Fragmnet;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,18 +20,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.fjh.onlinereader.Adapter.bookListAdapter;
 import com.example.fjh.onlinereader.Animation.MyAnimation;
 import com.example.fjh.onlinereader.Bean.Book;
 import com.example.fjh.onlinereader.BookActivity;
-import com.example.fjh.onlinereader.Interface.booksListListener;
-import com.example.fjh.onlinereader.Manager.MyApplication;
+import com.example.fjh.onlinereader.Listener.booksListListener;
 import com.example.fjh.onlinereader.Model.booksListModelImpl;
 import com.example.fjh.onlinereader.R;
-import com.example.fjh.onlinereader.Util.LogUtil;
 import com.example.fjh.onlinereader.Widget.RecyclerItemClickListener;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -47,6 +43,7 @@ import java.util.List;
 public class BookListFragment extends Fragment implements booksListListener {
 
     public final int LINK_SUCCESS=1;
+    public final int LINK_SEARCH_SUCCESS=2;
     public final int LINK_ERROR=3;
 
     private final String TAG="booklist碎片";
@@ -66,6 +63,8 @@ public class BookListFragment extends Fragment implements booksListListener {
     private Toolbar toolbar_main;
     //avi动画
     private AVLoadingIndicatorView avi;
+    //searchResult
+    private TextView searchResultTextView;
 
     //定义model接口
     private booksListModelImpl blmi;
@@ -80,8 +79,19 @@ public class BookListFragment extends Fragment implements booksListListener {
                     bookListRecyclerView.setAdapter(adapter);
                     Log.d(TAG,"adapter成功");
                     stopAnim();
+                    searchResultTextView.setVisibility(View.GONE);
                     MyAnimation.startFABAnimation(fab);
                     break;
+                case LINK_SEARCH_SUCCESS:
+                    if(bookList.size()==0){
+                        adapter=new bookListAdapter(bookList);
+                        bookListRecyclerView.setAdapter(adapter);
+                        searchResultTextView.setVisibility(View.VISIBLE);
+                    }else {
+                        adapter=new bookListAdapter(bookList);
+                        bookListRecyclerView.setAdapter(adapter);
+                        Log.d(TAG,"adapter成功");
+                    }break;
                 case LINK_ERROR:
                     Snackbar.make(swipeRefresh,msg.obj.toString(),Snackbar.LENGTH_LONG).show();
                     Log.d(TAG,msg.obj.toString());
@@ -116,6 +126,7 @@ public class BookListFragment extends Fragment implements booksListListener {
 
         //过度动画
         avi=(AVLoadingIndicatorView)view.findViewById(R.id.Book_avi);
+        searchResultTextView=(TextView)view.findViewById(R.id.Book_SearchNoResult);
 
         //Model层接口,从网络获取书籍
         blmi=new booksListModelImpl();
@@ -140,6 +151,7 @@ public class BookListFragment extends Fragment implements booksListListener {
                 Log.d(TAG,"设置悬浮按钮floatting点击事件");
                 materialDialog=new MaterialDialog.Builder(getContext())
                         .title(R.string.search)
+                        .iconRes(R.drawable.ic_search_black_18dp)
                         .input(R.string.input_hint, R.string.input_prefill, new MaterialDialog.InputCallback() {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
@@ -155,7 +167,6 @@ public class BookListFragment extends Fragment implements booksListListener {
     //确认搜索
     private void doSearch(String input){
         blmi.getSearchBooksList(input,this);
-        startAnim();
     }
 
     //下拉刷新事件
@@ -207,6 +218,16 @@ public class BookListFragment extends Fragment implements booksListListener {
         Log.d(TAG,"通讯成功");
     }
 
+    //搜索成功
+    @Override
+    public void onSearchSuccess(List<Book> b) {
+        bookList.clear();
+        this.bookList=b;
+        Message message=new Message();
+        message.what=LINK_SEARCH_SUCCESS;
+        handler.sendMessage(message);
+        Log.d(TAG,"所搜成功");
+    }
 
     //通讯失败
     @Override

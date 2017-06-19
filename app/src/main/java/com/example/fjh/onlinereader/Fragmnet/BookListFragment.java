@@ -28,6 +28,7 @@ import com.example.fjh.onlinereader.Animation.MyAnimation;
 import com.example.fjh.onlinereader.Bean.Book;
 import com.example.fjh.onlinereader.BookActivity;
 import com.example.fjh.onlinereader.Listener.booksListListener;
+import com.example.fjh.onlinereader.Manager.MyApplication;
 import com.example.fjh.onlinereader.Model.booksListModelImpl;
 import com.example.fjh.onlinereader.R;
 import com.example.fjh.onlinereader.Widget.RecyclerItemClickListener;
@@ -189,6 +190,7 @@ public class BookListFragment extends Fragment implements booksListListener {
                             view.findViewById(R.id.book_item_images), getString(R.string.transition_book_imgages));
 
             ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
+            //MyApplication.getContext().startActivity(intent);
         }
     };
 

@@ -16,7 +16,7 @@ import java.util.List;
  * 搜集所有打开的activity
  */
 
-public class ActivityManager extends AppCompatActivity {
+public class ActivityManager {
     public static List<Activity> activities=new ArrayList<>();
     public static void addActivity(Activity activity){
         activities.add(activity);
@@ -30,11 +30,5 @@ public class ActivityManager extends AppCompatActivity {
                activity.finish();
            }
         }
-    }
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        LogUtil.d("BaseActivity",getClass().getSimpleName());
     }
 }

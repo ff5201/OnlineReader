@@ -14,10 +14,31 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/book_viewPage"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginRight="@dimen/book_list_CardView_TB"
                     android:layout_marginLeft="@dimen/book_list_CardView_TB"
-                    android:layout_marginTop="@dimen/book_list_CardView_TB"
-                    android:layout_marginBottom="@dimen/book_list_CardView_TB"/>
+                    android:layout_marginTop="@dimen/book_list_CardView_TB" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="@dimen/book_list_CardView_TB"
+                    android:layout_marginLeft="@dimen/book_list_CardView_TB">
+                        <TextView
+                            android:id="@+id/time_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/battery_image"
+                            android:layout_centerVertical="true"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp" />
+                        <ImageView
+                            android:id="@+id/battery_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/stat_sys_battery"/>
+                </RelativeLayout>
         </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#00bcd4</color>
-    <color name="colorPrimaryDark">#00838f</color>
-    <color name="colorAccent">#80deea</color>
+    <color name="colorPrimary">#9c27b0</color>
+    <color name="colorPrimaryDark">#d500f9</color>
+    <color name="colorAccent">#aa00ff</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
-    <color name="readBack">#CD853F</color>
-    <color name="readCrad">#F0E68C</color>
+    <color name="readBack">#6d4c41</color>
+    <color name="readCrad">#f6f1e7</color>
     <color name="text_Grey">#8496a0</color>
     <color name="colorWhite">#ffffff</color>
 </resources>

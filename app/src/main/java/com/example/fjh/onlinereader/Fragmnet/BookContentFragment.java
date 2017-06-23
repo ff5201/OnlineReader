@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.fjh.onlinereader.Bean.Catalog;
+import com.example.fjh.onlinereader.Bean.CatalogList;
 import com.example.fjh.onlinereader.Listener.bookContentListener;
 import com.example.fjh.onlinereader.Manager.MyApplication;
 import com.example.fjh.onlinereader.Model.bookContentModelImpl;
@@ -49,6 +50,11 @@ public class BookContentFragment extends Fragment implements bookContentListener
     //private TextView textViewLevel;
     private Catalog catalog;
     private bookContentModelImpl bcmi;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
 
     @Nullable
     @Override
@@ -89,10 +95,12 @@ public class BookContentFragment extends Fragment implements bookContentListener
         }
     }
 
+    //设置标题，图书内容
     private void showBookTitleAndContent(){
         title.setText(catalog.getTitle()+" "+catalog.getName());
         content.setText(catalog.getContent());
     }
+
 
     //获取目录内容成功
     @Override
@@ -108,6 +116,8 @@ public class BookContentFragment extends Fragment implements bookContentListener
     public void getContentError(String e) {
 
     }
+
+
 
 }
 

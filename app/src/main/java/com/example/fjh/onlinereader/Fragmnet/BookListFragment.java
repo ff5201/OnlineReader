@@ -85,12 +85,11 @@ public class BookListFragment extends Fragment implements booksListListener {
                     break;
                 case LINK_SEARCH_SUCCESS:
                     if(bookList.size()==0){
-                        adapter=new bookListAdapter(bookList);
-                        bookListRecyclerView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
                         searchResultTextView.setVisibility(View.VISIBLE);
                     }else {
-                        adapter=new bookListAdapter(bookList);
-                        bookListRecyclerView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                        searchResultTextView.setVisibility(View.GONE);
                         Log.d(TAG,"adapter成功");
                     }break;
                 case LINK_ERROR:
@@ -224,7 +223,10 @@ public class BookListFragment extends Fragment implements booksListListener {
     @Override
     public void onSearchSuccess(List<Book> b) {
         bookList.clear();
-        this.bookList=b;
+        for (Book book:b
+             ) {
+            bookList.add(book);
+        }
         Message message=new Message();
         message.what=LINK_SEARCH_SUCCESS;
         handler.sendMessage(message);

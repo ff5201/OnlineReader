@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
+import com.example.fjh.onlinereader.ContentActivity;
+import com.example.fjh.onlinereader.Manager.MyApplication;
 import com.example.fjh.onlinereader.Util.LogUtil;
 
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ public class SwitchStatePagerAdapter extends FragmentStatePagerAdapter {
     public static final String TAG = SwitchStatePagerAdapter.class.getSimpleName();
 
     private List<Fragment> mFragments = new ArrayList<>();
+
 
     public SwitchStatePagerAdapter(FragmentManager fm) {
         super(fm);

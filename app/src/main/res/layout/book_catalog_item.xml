@@ -13,7 +13,7 @@
         android:layout_marginLeft="@dimen/catalog_item_marginLR"
         android:layout_marginRight="@dimen/catalog_item_marginLR"
         android:layout_marginTop="@dimen/catalog_item_marginTB"
-        android:textColor="@color/primary_text"
+        android:textColor="@color/secondary_text"
         android:gravity="center_vertical"
         android:textSize="14sp"/>
     <TextView

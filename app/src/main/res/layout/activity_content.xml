@@ -39,6 +39,24 @@
                             android:layout_alignParentLeft="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/stat_sys_battery"/>
+                        <TextView
+                            android:id="@+id/percent_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp" />
+                        <!--<TextView
+                            android:id="@+id/wordCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/percent_text"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"
+                            android:text="1,874字"/>-->
                 </RelativeLayout>
         </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

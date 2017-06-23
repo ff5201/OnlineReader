@@ -89,11 +89,11 @@ public class bookListAdapter extends RecyclerView.Adapter<bookListAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         Book book = bookList.get(position);
         holder.bookName.setText(book.getName());
-        holder.bookAuthor.append(book.getAuthor());
-        holder.bookSubheading.append(book.getSubheading());
-        holder.bookPublication.append(book.getPublication());
-        holder.bookFontNumber.append(book.getFontNumber());
-        holder.bookPrice.append(String.valueOf(book.getPrice()));
+        holder.bookAuthor.setText(book.getAuthor()+"   著");
+        holder.bookSubheading.setText("状态:"+book.getSubheading());
+        holder.bookPublication.setText("出版时间:"+book.getPublication());
+        holder.bookFontNumber.setText("页数:"+book.getFontNumber());
+        holder.bookPrice.setText("热度:"+String.valueOf(book.getPrice())+"%");
         String imgPath=new url().ImgPath+book.getBookImg();
         Glide.with(context).load(imgPath).error(R.drawable.temp_book).into(holder.bookImage);
         MyAnimation.RecyclerInterAnimation(holder.itemView,position);

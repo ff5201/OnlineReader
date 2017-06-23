@@ -27,4 +27,8 @@ public class CatalogList {
         }
         return i;
     }
+
+    public static int getCount(){
+        return catalogList.size();
+    }
 }

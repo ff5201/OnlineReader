@@ -1,9 +1,14 @@
 package com.example.fjh.onlinereader;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.ViewDragHelper;
@@ -13,13 +18,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.fjh.onlinereader.Fragmnet.AboutFragment;
 import com.example.fjh.onlinereader.Fragmnet.BookListFragment;
 import com.example.fjh.onlinereader.Manager.ActivityManager;
+import com.example.fjh.onlinereader.Manager.MyApplication;
 import com.example.fjh.onlinereader.Util.LogUtil;
 
 import java.lang.reflect.Field;
+import java.util.jar.Manifest;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -34,6 +44,8 @@ public class MainActivity extends AppCompatActivity  {
     private Toolbar toolbar_main;
     //actionBar
     private ActionBar actionBar;
+    //SharedPreferences
+    SharedPreferences sharedPreferences;
 
 
     @Override
@@ -67,7 +79,9 @@ public class MainActivity extends AppCompatActivity  {
         navigationView.setCheckedItem(R.id.nav_home);
         setNavClick(navigationView);
 
+
         switchToMain();
+
 
     }
 
@@ -90,6 +104,7 @@ public class MainActivity extends AppCompatActivity  {
         LogUtil.d(TAG,"MainActivity已被销毁");
     }
 
+
     private void switchToMain() {
         getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, new BookListFragment()).commit();
         actionBar.setTitle(R.string.home);
@@ -101,7 +116,47 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     private void switchToExit(){
-        ActivityManager.finishAll();
+        //ActivityManager.finishAll();
+        sharedPreferences=getSharedPreferences("data",MODE_PRIVATE);
+        Boolean isHint=sharedPreferences.getBoolean("noHintExit",false);
+        if(!isHint){
+            new MaterialDialog.Builder(MainActivity.this)
+                    .title("退出")
+                    .iconRes(R.drawable.ic_exit_to_app_black_18dp)
+                    .content("是否确认退出?")
+                    .positiveText("确认")
+                    .negativeText("取消")
+                    //CheckBox
+                    .checkBoxPrompt("不再提醒", false, new CompoundButton.OnCheckedChangeListener(){
+                        @Override
+                        public void onCheckedChanged(CompoundButton compoundButton, boolean bl) {
+                            if (bl) {
+                                SharedPreferences.Editor editor=getSharedPreferences("data",MODE_PRIVATE).edit();
+                                editor.putBoolean("noHintExit",true);
+                                editor.apply();
+                            } else {
+                                SharedPreferences.Editor editor=getSharedPreferences("data",MODE_PRIVATE).edit();
+                                editor.putBoolean("noHintExit",false);
+                                editor.apply();
+                            }
+                        }
+                    })
+                    //点击事件添加
+                    .onAny(new MaterialDialog.SingleButtonCallback() {
+                        @Override
+                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                            if (which == DialogAction.POSITIVE) {
+                                ActivityManager.finishAll();
+                            } else if (which == DialogAction.NEGATIVE) {
+
+                            }
+
+                        }
+                    })
+                    .show();
+        }else{
+            ActivityManager.finishAll();
+        }
     }
 
     //设置Navigation点击事件

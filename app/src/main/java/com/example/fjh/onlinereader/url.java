@@ -5,7 +5,7 @@ package com.example.fjh.onlinereader;
  */
 
 public class  url {
-    final private static String IP="http://116.10.17.157:8881/TomcatTest/";
+    final private static String IP="http://169.254.222.40:8881/TomcatTest/";
     final public static String bookListURL=IP+"BookListServlet";
     final public static String getBookCatalogURL=IP+"BookCatalogServlet";
     final public static String ImgPath=IP+"Images/";

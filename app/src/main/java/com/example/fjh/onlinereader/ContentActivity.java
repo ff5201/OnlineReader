@@ -21,6 +21,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fjh.onlinereader.Adapter.SwitchStatePagerAdapter;
 import com.example.fjh.onlinereader.Bean.Catalog;
@@ -36,12 +37,16 @@ import java.util.Date;
 import java.util.List;
 
 
-public class ContentActivity extends AppCompatActivity {
+public class ContentActivity extends AppCompatActivity  {
 
+    private String TAG="书籍目录内容";
     ViewPager viewPager;
     private ImageView battery_image;
     private TextView time_view;
-    private AnimationDrawable animationDrawable;
+    private TextView percent_view;
+    //private TextView wordCount_view;
+    //private AnimationDrawable animationDrawable;
+    SwitchStatePagerAdapter switchStatePagerAdapter;
     private Handler handler=new refreshTimeHandler();
 
     @Override
@@ -55,6 +60,8 @@ public class ContentActivity extends AppCompatActivity {
         Catalog catalog = (Catalog) getIntent().getSerializableExtra("bookCatalog");
         battery_image=(ImageView)findViewById(R.id.battery_image);
         time_view=(TextView)findViewById(R.id.time_text);
+        percent_view=(TextView)findViewById(R.id.percent_text);
+        //wordCount_view=(TextView)findViewById(R.id.wordCount);
         IntentFilter intentFilter=new IntentFilter();
         intentFilter.addAction(Intent.ACTION_BATTERY_CHANGED);
         //注册接收器以获取电量信息
@@ -67,10 +74,12 @@ public class ContentActivity extends AppCompatActivity {
              ) {
             fragmentList.add(new BookContentFragment().newInstance(c));
         }
-        SwitchStatePagerAdapter switchStatePagerAdapter=new SwitchStatePagerAdapter(getSupportFragmentManager());
+        switchStatePagerAdapter=new SwitchStatePagerAdapter(getSupportFragmentManager());
         switchStatePagerAdapter.setFragments(fragmentList);
         viewPager.setAdapter(switchStatePagerAdapter);
+        viewPager.addOnPageChangeListener(onPageChangeListener);
         viewPager.setCurrentItem(CatalogList.getItemLocation(catalog));
+        percent_view.setText(String.valueOf(CatalogList.getItemLocation(catalog)+1)+"/"+String.valueOf(CatalogList.getCount()));
         /*FragmentManager fm=getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.book_content,BookContentFragment.newInstance(catalog)).commit();*/
         new Thread(new refreshTimeThread()).start();
@@ -111,6 +120,35 @@ public class ContentActivity extends AppCompatActivity {
         }
     }
 
+    //ViewPage滑动监听
+    private ViewPager.OnPageChangeListener onPageChangeListener=new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageSelected(int arg0) {
+            // arg0是当前选中的页面的Position
+            LogUtil.d(TAG, "onPageSelected------>"+arg0);
+            percent_view.setText(String.valueOf(arg0+1)+"/"+String.valueOf(CatalogList.getCount()));
+        }
+        @Override
+        public void onPageScrolled(int arg0, float arg1, int arg2) {
+            // arg0 :当前页面，及你点击滑动的页面；arg1:当前页面偏移的百分比；arg2:当前页面偏移的像素位置
+            LogUtil.d(TAG, "onPageScrolled------>arg0："+arg0+"\nonPageScrolled------>arg1:"+arg1+"\nonPageScrolled------>arg2:"+arg2);
+        }
+        @Override
+        public void onPageScrollStateChanged(int arg0) {
+            //arg0 ==1的时表示正在滑动，arg0==2的时表示滑动完毕了，arg0==0的时表示什么都没做。
+            if(arg0 == 0){
+                LogUtil.d(TAG, "onPageScrollStateChanged------>0");
+            }else if(arg0 == 1){
+                LogUtil.d(TAG, "onPageScrollStateChanged------>1");
+            }else if(arg0 == 2){
+                LogUtil.d(TAG, "onPageScrollStateChanged------>2");
+                /*TextView content=(TextView)findViewById(R.id.content_text);
+                wordCount_view.setText(String.valueOf(content.getText().toString().length()));*/
+            }
+        }
+    };
+
+
     //动态注册电量监听广播
    /* private int batteryLevel;
     private int batteryScale;*/
@@ -144,12 +182,14 @@ public class ContentActivity extends AppCompatActivity {
                     battery_image.getDrawable().setLevel(level);
                     break;
                 case BatteryManager.BATTERY_STATUS_NOT_CHARGING:
+                    statusString = "not charging";
                     battery_image.setImageResource(R.drawable.stat_sys_battery);
                     battery_image.getDrawable().setLevel(level);
-                    statusString = "not charging";
                     break;
                 case BatteryManager.BATTERY_STATUS_FULL:
                     statusString = "full";
+                    battery_image.setImageResource(R.drawable.stat_sys_battery_charge);
+                    battery_image.getDrawable().setLevel(100);
                     break;
             }
             LogUtil.d("电量状态：",statusString);
